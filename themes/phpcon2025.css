@@ -1,0 +1,107 @@
+/* @theme phpcon2025 */
+
+@import 'default';
+
+:root {
+  --main-color: #01A2C1;
+  --accent-color: #FEE271;
+  --background-color: #F2FCFE;
+  --text-color: #4D4C4B;
+}
+
+section {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Hiragino Kaku Gothic ProN', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ヘッダースタイル */
+section h1 {
+  color: var(--main-color);
+  border-bottom: 3px solid var(--main-color);
+  padding-bottom: 0.2em;
+}
+
+section h2 {
+  color: var(--main-color);
+  border-left: 5px solid var(--main-color);
+  padding-left: 0.5em;
+  margin-left: -0.5em;
+}
+
+section h3 {
+  color: var(--main-color);
+}
+
+/* アクセント要素 */
+section strong {
+  color: var(--main-color);
+  background: var(--accent-color);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+/* リンクスタイル */
+section a {
+  color: var(--main-color);
+}
+
+section a:hover {
+  color: var(--accent-color);
+}
+
+/* コードブロック */
+section pre {
+  background: #ffffff;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+}
+
+section code {
+  background: var(--accent-color);
+  color: var(--text-color);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+/* テーブルスタイル */
+section table th {
+  background: var(--main-color);
+  color: white;
+}
+
+section table td {
+  border: 1px solid var(--main-color);
+}
+
+/* リストスタイル */
+section ul li::marker,
+section ol li::marker {
+  color: var(--main-color);
+}
+
+/* lead クラス（タイトルスライド用） */
+section.lead {
+  background: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+}
+
+section.lead h1,
+section.lead h2,
+section.lead h3 {
+  color: var(--main-color);
+  border: none;
+}
+
+/* ページネーション */
+section::after {
+  color: var(--main-color);
+  background: var(--accent-color);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+}
