@@ -1,0 +1,23 @@
+{
+  "name": "my-marp-slides",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "marp --preview presentation.md",
+    "build": "marp --html --theme themes/custom.css -o presentation.html presentation.md"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.2.0",
+    "textlint": "^14.8.4",
+    "textlint-rule-ja-space-between-half-and-full-width": "^2.4.2"
+  },
+  "marp": {
+    "themes": [
+      "themes/custom.css"
+    ]
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

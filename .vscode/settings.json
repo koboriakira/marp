@@ -1,0 +1,7 @@
+{
+  "textlint.autoFixOnSave": true,
+  "textlint.configPath": ".textlintrc",
+  "textlint.languages": ["markdown"],
+  "markdown.marp.themes": ["./themes/custom.css"],
+  "markdown.marp.html": "default"
+}
