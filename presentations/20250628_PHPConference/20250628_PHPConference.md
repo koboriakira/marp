@@ -5,6 +5,63 @@ class: lead
 paginate: true
 --------------
 
+<style>
+/* このスライド専用のカスタムスタイル */
+
+/* 見出しのスタイル調整 */
+h1 {
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #34495e;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+/* コードブロックのスタイル */
+pre {
+  background: #f8f9fa;
+  border-left: 4px solid #007acc;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* リストのスタイル */
+ul li {
+  margin-bottom: 8px;
+}
+
+/* 強調テキスト */
+strong {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* QRコードやFIXMEコメント用のスタイル */
+section:has(<!-- FIXME */) {
+  position: relative;
+}
+
+/* カスタムクラス例 */
+.highlight-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.demo-note {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+</style>
+
 # Akira Kobori
 
 # **AIエージェントはこう育てる**
