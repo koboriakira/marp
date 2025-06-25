@@ -5,204 +5,208 @@ class: lead
 paginate: true
 --------------
 
-# GitHub Copilot Agent を
+# Akira Kobori
 
-# **“置くだけ”で終わらせない**
+# **AIエージェントはこう育てる**
 
-### 最初の 1 ファイルから自動レビューまで
+### GitHub Copilot Agentとチームの共進化サイクル
 
 **PHP Conference 2025**
-Akira Kobori / @kobori_akira_pw
+
+<!-- FIXME: スライドのQRコードを入れること -->
 
 ---
 
-## なぜ今 AI エージェント?
+# 最初に
 
-* PR レビューに時間がかかる
-* コードを書くより**待ち時間**が長い
-* Copilot Agent で「書く＋レビュー」を自動化
+## Claude Codeについて
 
-<!-- Ask audience: 1 PR レビューに何分? 挙手 -->
+- 2025年2月
+  - 弊チームのGitHub Copilot Agent導入 
+- 2025年5月
+  - 本トーク採択
+  - **Claude Code発表**
 
----
-
-## Copilot Agent 超速概要
-
-![bg auto 80%](assets/agent-overview.png)
-
-* **LLM**
-* **Instructions ファイル**
-* **Tools (CLI / API)**
-
-> ChatGPT だけでは届かない“リポジトリ文脈”を注入
+2025年6月時点では、Claude Codeの導入検討をすべきかもしれない
 
 ---
 
-## 3 つのステップで始める
+# 結論
 
-1. 全員導入 & `copilot-instructions.md`
-2. Issue / PR プロンプトを置く
-3. Copilot を自動レビュワー化
-
----
-
-<!-- _class: lead -->
-
-# STEP 1
-
-## 全員導入 & 初期指示
+- AIエージェントの利用は**全員で**やること
+- **IssueやPRの作成**から改善していく
+- **Copilot用のドキュメント**のメンテナンスに注力する
+  - 完璧を目指すのではなく、指示が上手くいかないタイミングでメンテしていく
 
 ---
 
-### Why 全員導入?
+# GitHub Copilot Agentとは
 
-| 分断が起きる 🙅‍♂️               | 全員が使う 🙆‍♂️              |
-| ---------------------------- | ------------------------- |
-| 使える / 使えない でモチベ差 | "再現できる" で議論が早い |
+* 通常のGitHub CopilotのEditモードよりは自律性が高い
+* Devinよりは自律性が低い
+* 総じて**はじめてのAIエージェントとしては適している**ように感じる
+
+※以降GitHub Copilot Agentを`Agent`と表記
+
 
 ---
 
-### `.github/copilot-instructions.md`
+## 開発生産性の変化
 
-```md
-# GitHub Copilot Agent Instructions
+前期と今期とで、次のような違いが出ました。
 
-リポジトリ概要: PHP 8.3 / Laravel 11
+* コミット数: 1,000件 → 10,000件
+* PR数: 200件 → 400件
+* リリース: 30件 → 50件 (※)
 
-- **やりとりは日本語**
-- 返答は 80 行以内
-- PSR-12 コーディング規約を守る
+※リリース業務の改善による影響もあり。その改善もCopilotを利用しています
+
+---
+
+# 大変だったこと
+
+Agentを"使う"理由と同じくらい、**Agentを"使わない"理由もある**。
+
+* そもそもAgentの使い方がわからない → Step1: Agentの導入
+* Agentを使う場面が実は少ない → Step2: promptの整備
+* もっと使いこなしたい → Step3: instructionのメンテナンス
+
+チーム単位で効果を出すには、上記のような課題をひとつずつ解決せねばならない。
+
+以下、それぞれの解決策を紹介する。
+
+---
+
+# Step1: Agentの導入
+
+---
+
+# Step1: Agentの導入
+
+「**利用できない**」を解消することで、後続の利用が促進される。
+とくに"使いこなせる人"と"使いこなせない人"との間で**分断が起きる**ことを必ず避ける。
+
+1. 全体的な**システムプロンプト**を準備しておく  
+   ※余裕があれば、後述のpromptも用意できるとベスト
+2. Agentのインストールから最初の利用までを**ハンズオンで同期的に**行う
+
+まずは効果の有無を問わず、全員がAgentを使える状態にする。
+
+<!--
+ドキュメントによる非同期な導入も可能だが、ここで脱落する人がいるリスクは大きすぎる
+-->
+
+---
+
+# システムプロンプトの中身
+
+`.github/copilot-instructions.md`としてコミットする。
+
+```.github/copilot-instructions.md
+# やりとりについて
+
+- 特定の指示がないかぎり、日本語での回答をしてください
+- 特定の指示がないかぎり、一度のやりとりで行う修正は  
+  ひとつのコミットレベルになる程度の規模にしてください
+- 作業内容を簡潔にまとめたレポートを作成してください
+    - `.github/copilot_logs/{YYYY-MM-DD}_{指示内容}.md`
 ```
 
-> *Live demo*: VS Code で作成 → git commit
+---
+
+# Step2: promptの整備
 
 ---
 
-<!-- _class: lead -->
+# Step2: promptの整備
 
-# STEP 2
+メンバーによってはちょうど実装業務に従事しておらず「なのでAgentは使わない」と考える人もいる。
+そのため実装作業だけでなく**開発業務**の観点でAgentを利用できる土台をつくる。
 
-## Issue / PR プロンプト
+- **Issueの作成**
+- **PRの作成**
+- その他
+  - 問い合わせ対応
+  - SQL作成
+
+上記それぞれのpromptを作成する。
 
 ---
 
-### 面倒な作業から自動化
+# なぜIssue/PRの作成のpromptを優先するのか？
+
+- もっとも**人間がサボりやすい**業務であるから
+- もっとも**ちゃんとやると時間のかかる**業務であるから
+
+仮に多少の誤りがあったとしても「Issueが作成されない」「PR本文が空欄」という事態は避けられる。
+Agentに大量の文章を生成させたあとで、開発者が最初のレビュワーとして編集する流れになるとよい。
+
+---
+
+# refs: Issue作成プロンプト
+
+- **注意**
+  - `./.github/prompts`以下に格納すること
+    - ex. `./.github/prompts/github/create-issue.md`
+  - GitHubのMCPサーバが必要です
 
 ```
-.github/prompts/github/
- ├─ create-issue.md
- └─ create-pr.md
+GitHubの操作アシスタントとして、Issueを作成してください。
+
+以下の情報が提供、もしくはこれまでのやりとりから想定できます。
+もし情報が不足している場合は、ユーザに質問して補完してください。
+
+- Issueのタイトル
+- 概要
+- 現時点でわかっている開発内容
+- 期待される動作
 ```
 
-* まず **Issue タイトル/本文** を自動生成
-* PR は**二段構えテンプレ**で一次レビュー
+<!-- FIXME: ライブデモやりたい -->
 
 ---
 
-#### 二段構えテンプレ (抜粋)
+# Step3: instructionのメンテナンス
 
-```md
-<!-- Copilot raw output ↓ -->
-...
-<!-- Copilot raw output ↑ -->
+このあたりから「〜の場合に上手くいかない」「もっと使いこなしたい」という声が出てくる。
+そのような声に応えるため、**Agentのinstructionをメンテナンスする**。
 
-### ✂ Curated Description (編集必須)
-- 変更サマリ (50 行以内)
-- 影響範囲 / テスト結果
+ただしいきなり体系的に整備しようとするとハードルが高い。
+まずは**上手くいかなかったときにメンテナンスする**ことをおすすめする。
 
-- [ ] I have reviewed & trimmed the Copilot output.
-```
+※「instructionsもAgentに全部書かせればよい」という意見もあるが、発表者は否定的な立場。  
+  Agentの大量出力の正しさを判定しきれず、結局コミットできないことが多かった。
 
 ---
 
-<!-- _class: lead -->
+# 結論
 
-# STEP 3
+Agentを"使わない"理由をひとつずつ解消し、Agent利用が自然なものにする
 
-## Copilot を自動レビュワー化
-
----
-
-### CODEOWNERS で Bot を指名
-
-```
-* @github-copilot
-```
-
-`branch protection`: **"Copilot review ✓" 必須**
+- 不要なスキル差・分断を生まないように...
+  - AIエージェントの利用は**全員で**やる
+- コーディング業務の割合が多い人だけが使うようにならないように...
+  - **IssueやPRの作成プロンプト**から改善していく
+- Agent利用の限界を決めないように...
+  - **Copilot用のドキュメント**のメンテナンスに注力する
+  - 完璧を目指すのではなく、指示が上手くいかないタイミングでメンテしていく
 
 ---
 
-### GitHub Actions ワークフロー
+# ご清聴ありがとうございました！
 
-```yaml
-name: Copilot Review
-on: [pull_request]
-permissions:
-  pull-requests: write
-jobs:
-  review:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Copilot Review
-        run: ./scripts/copilot-review.sh
-```
+- 本日懇親会には出席しないため、よろしければお声がけください！
+- 話したかったけれど話せなかったこと
+  - Issue作成実行時に、そのIssue解決用のプロンプトをあわせて生成する
+  - テーブル定義をまとめて放り込んでおくと、いろいろとメリットありました
+  - 開発のスピード感や注意すべき点が変わるので、チームのルールや文化も見直したい
 
-Bot が PR にコメント ➜ 作成者が修正 ➜ 人間は設計を見る
-
----
-
-## メトリクスで効果を測る
-
-* `raw_chars / curated_chars` 比率
-* Copilot 指摘採用率
-* Build fail → fix までの時間
-
-> 週次 15 分レトロで共有
-
----
-
-## Pitfalls & Guardrails
-
-1. **長文放置** → 二段構え＋CI ゲート
-2. **シークレット流出** → Diff マスク
-3. **コンテキスト肥大** → RAG or ファイル分割
-
----
-
-<!-- _class: lead -->
-
-# 3 Key Takeaways
-
-1. **まず 1 ファイル** を全員コミット
-2. **一次レビューは開発者＋Bot**
-3. **数字で効果を測って回す**
-
----
-
-## 24h チャレンジ
-
-1. `copilot-instructions.md` を作る
-2. Issue/PR プロンプトを置く
-3. 次の PR で **Copilot Review Bot** を走らせる
-
-👉 サンプル & スクリプトは **QR コード** から
-
-![bg right 40%](assets/qr-placeholder.png)
-
----
-
-# Q & A
-
-*時間いっぱいまでどうぞ！*
-
----
-
-<!-- presenter notes -->
+<!-- presenter notes 
 
 notes:
 
 * タイマーを 25:00 でスタート
 * Demo 時間: Step1 slide 2 分以内、Step2 before/after 1.5 分
 * If Q\&A なし→Takeaways 再掲で調整
+
+-->
