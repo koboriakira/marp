@@ -1,6 +1,5 @@
 ---
 marp: true
-theme: phpcon2025
 class: lead
 paginate: true
 --------------
@@ -47,6 +46,7 @@ strong {
 /* セカンダリテキスト（重要度の低いテキスト） */
 .secondary {
   color: #828282;
+  font-size: 0.9em;
 }
 
 /* QRコードやFIXMEコメント用のスタイル */
@@ -272,16 +272,20 @@ Agentを"使わない"理由をひとつずつ解消し、Agent利用が自然�
 
 ---
 
-# ご清聴ありがとうございました！
+# ご清聴ありがとうございます
 
-- 本日懇親会には出席しないため、よろしければお声がけください！
-- 話したかったけれど話せなかったこと
-  - Issue作成実行時に、そのIssue解決用のプロンプトをあわせて生成する
-  - テーブル定義をまとめて放り込んでおくと、いろいろとメリットありました
-  - 開発のスピード感や注意すべき点が変わるので、チームのルールや文化も見直したい
-  - PRのレビュワーにCopilotを指定しましょう
+![bg right:40%](pom.jpg)
 
-![](pom.jpg)
+<span class="secondary">懇親会には参加できず、ぜひお声がけください！</span>
+<span class="secondary">ちなみに東京女子プロレス推しです！</span>
+
+## 話したりないこと
+
+- <span class="secondary">Issue作成実行時に、そのIssue解決用のプロンプトをあわせて生成する</span>
+- <span class="secondary">テーブル定義をまとめて放り込んでおくと、いろいろとメリットありました</span>
+- <span class="secondary">開発のスピード感や注意すべき点が変わるので、チームのルールや文化も見直したい</span>
+- <span class="secondary">PRのレビュワーにCopilotを指定しましょう</span>
+
 
 <!-- presenter notes 
 
