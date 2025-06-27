@@ -8,22 +8,27 @@ paginate: true
 <style>
 /* このスライド専用のカスタムスタイル */
 
+/* フォント設定 */
+section {
+  font-family: 'M PLUS 1p', 'Hiragino Kaku Gothic ProN', 'Helvetica Neue', Arial, sans-serif;
+}
+
 /* 見出しのスタイル調整 */
 h1 {
-  color: #2c3e50;
+  color: #01a3c1;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 h2 {
-  color: #34495e;
-  border-bottom: 2px solid #3498db;
+  color: #4d4c4b;
+  border-bottom: 2px solid #01a3c1;
   padding-bottom: 10px;
 }
 
 /* コードブロックのスタイル */
 pre {
   background: #f8f9fa;
-  border-left: 4px solid #007acc;
+  border-left: 4px solid #01a3c1;
   padding: 15px;
   border-radius: 5px;
 }
@@ -35,8 +40,13 @@ ul li {
 
 /* 強調テキスト */
 strong {
-  color: #e74c3c;
+  color: #01a3c1;
   font-weight: bold;
+}
+
+/* セカンダリテキスト（重要度の低いテキスト） */
+.secondary {
+  color: #828282;
 }
 
 /* QRコードやFIXMEコメント用のスタイル */
@@ -59,6 +69,18 @@ section:has(<!-- FIXME */) {
   padding: 10px;
   border-radius: 5px;
   font-size: 0.9em;
+}
+
+/* タイトルのみのスライドをセンタリング */
+section:has(h1:only-child) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+section:has(h1:only-child) h1 {
+  margin: 0;
 }
 </style>
 
@@ -116,7 +138,7 @@ section:has(<!-- FIXME */) {
 * PR数: 200件 → 400件
 * リリース: 30件 → 50件 (※)
 
-※リリース業務の改善による影響もあり。その改善もCopilotを利用しています
+<span class="secondary">※リリース業務の改善による影響もあり。その改善もCopilotを利用しています</span>
 
 ---
 
@@ -166,7 +188,7 @@ Agentを"使う"理由と同じくらい、**Agentを"使わない"理由もあ�
 - 特定の指示がないかぎり、一度のやりとりで行う修正は  
   ひとつのコミットレベルになる程度の規模にしてください
 - 作業内容を簡潔にまとめたレポートを作成してください
-    - `.github/copilot_logs/{YYYY-MM-DD}_{指示内容}.md`
+    - `.github/copilot_logs/{YYYY-MM-DD}_{指示概要}.md`
 ```
 
 ---
