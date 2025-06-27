@@ -115,7 +115,7 @@ section:has(h1:only-child) h1 {
   - [だれかの進捗をうまく「把握」できないときのフレーズ集](https://www.youtube.com/watch?v=3KALSaO6K_U)
   - [本当はむずかしい「計画」のはなし](https://speakerdeck.com/koboriakira/ben-dang-hamuzukasii-ji-hua-nohanasi)
   - [残業なしで成果を出すためのあとまわし戦略](https://speakerdeck.com/codmoninc/can-ye-nasitecheng-guo-wochu-sutamenoatomawasizhan-lue)
-- 女子プロレスが好きです。上谷沙弥・原宿ぽむ推し
+- 女子プロレスが好きです
 
 <!--
 - プロレスでも第１試合、つまり最初が大事
@@ -297,7 +297,8 @@ GitHubの操作アシスタントとして、Issueを作成してください。
   - Issue作成プロンプト内で、開発ブランチの提案およびそのIssueを解決するためのプロンプトを生成する
   - 上記プロンプトを実行して実装する
   - PR作成プロンプトを実行するとき、Issue番号や内容はこれまでの内容から自動的に補完できるようにする 
-- git非管理のディレクトリも用意する (`.github/prompts/temporary`)
+- **練習用ディレクトリも用意する** (`.github/prompts/temporary`)
+  - いきなり本格運用ではなく、個人で試してから正式コミット
 
 ---
 
@@ -315,7 +316,7 @@ GitHubの操作アシスタントとして、Issueを作成してください。
 
 ```.github/instructions/php/php-controller.instructions.md
 ---
-applyTo: "src/Controller/.*Controller.php"
+applyTo: "src/Controller/**/*.php"
 ---
 
 # コントローラーの実装
@@ -382,10 +383,8 @@ Agentの利用を当たり前にするために、
 
 # ご清聴ありがとうございます
 
-![bg right:40%](pom.jpg)
-
 <span class="secondary">懇親会には参加できず、ぜひお声がけください！</span>
-<span class="secondary">ちなみに東京女子プロレス推しです！（撮影は筆者）</span>
+<span class="secondary">ちなみに原宿ぽむ選手推しです！</span>
 
 ## 話したりないこと
 
